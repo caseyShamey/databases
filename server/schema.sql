@@ -4,6 +4,7 @@ USE chat;
 
 CREATE TABLE messages (
   /* Describe your table here.*/
+
 );
 
 /* Create other tables and define schemas for them here! */
