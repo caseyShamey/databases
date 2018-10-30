@@ -1,65 +1,39 @@
-CREATE DATABASE chat;
+DROP DATABASE IF EXISTS cats;
+CREATE DATABASE cats;
 
-USE chat;
+USE cats;
 
-/* CREATE TABLE messages (
-  /* Describe your table here.*/
+DROP TABLE IF EXISTS messages;
 
---); */
-
-
--- ---
--- Globals
--- ---
-
--- SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
--- SET FOREIGN_KEY_CHECKS=0;
-
--- ---
--- Table 'messages'
---
--- ---
-
-DROP TABLE IF EXISTS `messages`;
-
-CREATE TABLE `messages` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `message` VARCHAR(250) NULL DEFAULT NULL,
-  `created at` DATETIME NULL DEFAULT NULL,
-  `id_users` INTEGER NULL DEFAULT NULL,
-  `id_rooms` INTEGER NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE messages (
+  id INTEGER AUTO_INCREMENT,
+  message VARCHAR(250) NULL DEFAULT NULL,
+  created_at DATETIME NULL DEFAULT NULL,
+  id_users INTEGER NULL DEFAULT NULL,
+  id_rooms INTEGER NULL DEFAULT NULL,
+  PRIMARY KEY (id)
 );
 
--- ---
--- Table 'rooms'
---
--- ---
+DROP TABLE IF EXISTS rooms;
 
-DROP TABLE IF EXISTS `rooms`;
-
-CREATE TABLE `rooms` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `room` VARCHAR(50) NULL DEFAULT NULL,
-  `id_messages` INTEGER NULL DEFAULT NULL,
-  `id_users` INTEGER NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE rooms (
+  id INTEGER AUTO_INCREMENT,
+  room VARCHAR(50) NULL DEFAULT NULL,
+  id_messages INTEGER NULL DEFAULT NULL,
+  id_users INTEGER NULL DEFAULT NULL,
+  PRIMARY KEY (id)
 );
 
--- ---
--- Table 'users'
---
--- ---
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS users;
 
-CREATE TABLE `users` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `user` VARCHAR(50) NULL DEFAULT NULL,
-  `id_messages` INTEGER NULL DEFAULT NULL,
-  `id_rooms` INTEGER NULL DEFAULT NULL,
-  `friends` VARCHAR(50) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE users (
+  id INTEGER AUTO_INCREMENT,
+  username VARCHAR(50) NULL DEFAULT NULL,
+  id_messages INTEGER NULL DEFAULT NULL,
+  id_rooms INTEGER NULL DEFAULT NULL,
+  friends VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (id)
 );
 
 -- ---
