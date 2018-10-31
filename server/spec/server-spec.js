@@ -1,5 +1,5 @@
-/* You'll need to have MySQL running and your Node server running
- * for these tests to pass. */
+// /* You'll need to have MySQL running and your Node server running
+//  * for these tests to pass. */
 
 var mysql = require('mysql');
 var request = require('request'); // You might need to npm install the request module!
@@ -10,13 +10,20 @@ describe('Persistent Node Chat Server', function() {
 
   beforeEach(function(done) {
     dbConnection = mysql.createConnection({
-      user: 'student',
-      password: 'student',
+      user: 'root',
+      password: '',
       database: 'chat'
     });
     dbConnection.connect();
 
-       var tablename = ""; // TODO: fill this out
+    var tablename = 'messages';
+
+    // dbConnection.query(
+    //   'SET FOREIGN_KEY_CHECKS = 0',
+    //   'TRUNCATE' + 'messages',
+    //   'TRUNCATE' + 'rooms',
+    //   'TRUNCATE' + 'users',
+    //   'SET FOREIGN_KEY_CHECKS = 1', done);
 
     /* Empty the db table before each test so that multiple tests
      * (or repeated runs of the tests) won't screw each other up: */
@@ -44,6 +51,7 @@ describe('Persistent Node Chat Server', function() {
           roomname: 'Hello'
         }
       }, function () {
+        console.log('IM WORKING NOW!!!');
         // Now if we look in the database, we should find the
         // posted message there.
 
@@ -67,8 +75,8 @@ describe('Persistent Node Chat Server', function() {
 
   it('Should output all messages from the DB', function(done) {
     // Let's insert a message into the db
-       var queryString = "";
-       var queryArgs = [];
+    var queryString = '';
+    var queryArgs = [];
     // TODO - The exact query string and query args to use
     // here depend on the schema you design, so I'll leave
     // them up to you. */
