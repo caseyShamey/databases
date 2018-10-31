@@ -9,8 +9,8 @@ CREATE TABLE messages (
   id INTEGER AUTO_INCREMENT,
   message VARCHAR(250) NULL DEFAULT NULL,
   created_at DATETIME NULL DEFAULT NULL,
-  id_users INTEGER NULL DEFAULT NULL,
-  id_rooms INTEGER NULL DEFAULT NULL,
+  -- id_users INTEGER NULL DEFAULT NULL,
+  -- id_rooms INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
@@ -19,8 +19,8 @@ DROP TABLE IF EXISTS rooms;
 CREATE TABLE rooms (
   id INTEGER AUTO_INCREMENT,
   room VARCHAR(50) NULL DEFAULT NULL,
-  id_messages INTEGER NULL DEFAULT NULL,
-  id_users INTEGER NULL DEFAULT NULL,
+  -- id_messages INTEGER NULL DEFAULT NULL,
+  -- id_users INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
@@ -30,8 +30,8 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id INTEGER AUTO_INCREMENT,
   username VARCHAR(50) NULL DEFAULT NULL,
-  id_messages INTEGER NULL DEFAULT NULL,
-  id_rooms INTEGER NULL DEFAULT NULL,
+  -- id_messages INTEGER NULL DEFAULT NULL,
+  -- id_rooms INTEGER NULL DEFAULT NULL,
   friends VARCHAR(50) NULL DEFAULT NULL,
   PRIMARY KEY (id)
 );
@@ -40,12 +40,12 @@ CREATE TABLE users (
 -- Foreign Keys
 -- ---
 
-ALTER TABLE `messages` ADD FOREIGN KEY (id_users) REFERENCES `users` (`id`);
-ALTER TABLE `messages` ADD FOREIGN KEY (id_rooms) REFERENCES `rooms` (`id`);
-ALTER TABLE `rooms` ADD FOREIGN KEY (id_messages) REFERENCES `messages` (`id`);
-ALTER TABLE `rooms` ADD FOREIGN KEY (id_users) REFERENCES `users` (`id`);
-ALTER TABLE `users` ADD FOREIGN KEY (id_messages) REFERENCES `messages` (`id`);
-ALTER TABLE `users` ADD FOREIGN KEY (id_rooms) REFERENCES `rooms` (`id`);
+-- ALTER TABLE `messages` ADD FOREIGN KEY (id_users) REFERENCES `users` (`id`);
+-- ALTER TABLE `messages` ADD FOREIGN KEY (id_rooms) REFERENCES `rooms` (`id`);
+-- ALTER TABLE `rooms` ADD FOREIGN KEY (id_messages) REFERENCES `messages` (`id`);
+-- ALTER TABLE `rooms` ADD FOREIGN KEY (id_users) REFERENCES `users` (`id`);
+-- ALTER TABLE `users` ADD FOREIGN KEY (id_messages) REFERENCES `messages` (`id`);
+-- ALTER TABLE `users` ADD FOREIGN KEY (id_rooms) REFERENCES `rooms` (`id`);
 
 -- ---
 -- Table Properties

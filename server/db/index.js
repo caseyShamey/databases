@@ -15,5 +15,5 @@ con.connect(function(err) {
   console.log('Connected!');
 });
 
-module.export = con;
 
+module.exports = con;
