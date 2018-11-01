@@ -2,14 +2,14 @@
 
 const App = function() {
   this.server = 'http://127.0.0.1:3000/classes/messages'; //added /classes/messages
-    // this.server = 'http://127.0.0.1:3000/classes/messages'
-    //'http://parse.rpt.hackreactor.com/chatterbox/classes/messages?order=-createdAt&limit=250';
+  // this.server = 'http://127.0.0.1:3000/classes/messages'
+  //'http://parse.rpt.hackreactor.com/chatterbox/classes/messages?order=-createdAt&limit=250';
 };
 
 App.prototype.init = function() {
   $.ajax({
     url: this.server,
-    type: `GET`,
+    type: 'GET',
     error: function() {
       $('#chats').html('<p>An error has occurred</p>');
     },
@@ -74,7 +74,7 @@ App.prototype.renderMessage = function() {
   $('#main').append(loadingGif);
   let $text = $('#textField').val();
   let userName = usernameFormatter(window.location.search);
-  let roomName = $(`#roomSelect option:selected`).text();
+  let roomName = $('#roomSelect option:selected').text();
 
   var $message = $(`<div class="chat ${roomName} ${userName}">`)
     .html(`<span class="username">${userName}:</span>
@@ -91,7 +91,7 @@ App.prototype.renderMessage = function() {
 
   var message = {
     username: userName,
-    text: $text,
+    message: $text,
     roomname: roomName
   };
   setTimeout(function() {
@@ -137,7 +137,7 @@ $(document).ready(function() {
 
 //Room Select functionality
 $(document).on('change', '#roomSelect', function() {
-  var $selected = $(`#roomSelect option:selected`);
+  var $selected = $('#roomSelect option:selected');
   var $selectedText = $selected.text();
   const newRoomClass = classFormatter($selectedText);
   const roomClassFinal = charEscaper(newRoomClass);
@@ -194,15 +194,15 @@ const charEscaper = function(string) {
   } else {
     return;
   }
-  if (result.includes(`'`)) {
-    let position = result.indexOf(`'`);
+  if (result.includes('\'')) {
+    let position = result.indexOf('\'');
     result = result.substr(0, position) + '\\' + result.substr(position);
   }
-  if (result.includes(`+`)) {
-    let position = result.indexOf(`+`);
+  if (result.includes('+')) {
+    let position = result.indexOf('+');
     result = result.substr(0, position) + '\\' + result.substr(position);
   }
-  if (result.startsWith(`.`)) {
+  if (result.startsWith('.')) {
     result = '\\' + result;
   }
   return result;
