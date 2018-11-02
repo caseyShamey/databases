@@ -3,23 +3,21 @@ var models = require('../models');
 module.exports = {
   messages: {
     get: function (req, res) {
-      models.messages.get((err, data) => {
+      models.messages.get((err, results) => {
         if (err) {
           throw err;
         } else {
-          res.json(data);
+          res.json(results);
         }
       });
     }, // a function which handles a get request for all messages
     post: function (req, res) {
-      var data = req.body;
-      console.log('message data', data);
-      models.messages.post(data, (err, data) => {
+      var params = [ req.body.message, req.body.username, req.body.roomname ];
+      models.messages.post(params, (err, results) => {
         if (err) {
           throw err;
         } else {
-          console.log('res data', data);
-          res.json(data);
+          res.json(results);
         }
       });
     } // a function which handles posting a message to the database
@@ -27,22 +25,21 @@ module.exports = {
 
   users: {
     get: function (req, res) {
-      models.users.get((err, data) => {
+      models.users.get((err, results) => {
         if (err) {
           throw err;
         } else {
-          res.json(data);
+          res.json(results);
         }
       });
     }, // a function which handles a get request for all users
     post: function (req, res) {
-      var data = req.body;
-      console.log('data', data);
-      models.users.post(data, (err, data) => {
+      var params = [ req.body.username ];
+      models.users.post(params, (err, results) => {
         if (err) {
           throw err;
         } else {
-          res.json(data);
+          res.json(results);
         }
       });
     }
